@@ -1,0 +1,6 @@
+Total Program Execution Time: 25.404990911483765 seconds
+Load Model Execution Time: 0.0005471706390380859 seconds
+Step 2 Execution Time: 0.0003247261047363281 seconds
+Step 3 Execution Time: 0.02908182144165039 seconds
+Step 4 Execution Time: 0.45115113258361816 seconds
+Step 5 Execution Time: 0.003634929656982422 seconds

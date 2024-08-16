@@ -1,0 +1,105 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2758
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww38200\viewh21600\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 ## README for PoI+NBU Project\
+\
+### Project Name: PoI+NBU\
+\
+This project involves a series of Python scripts that generate adversarial images by processing image regions of interest (PoI) and applying noise blow-up (NBU) techniques. Below are the detailed instructions for running the project, along with the required libraries.\
+\
+---\
+\
+### Prerequisites\
+\
+Ensure you have Python installed on your machine. The following Python libraries are required to run the scripts:\
+\
+#### Required Libraries:\
+\
+- **NumPy**: `pip install numpy`\
+- **Matplotlib**: `pip install matplotlib`\
+- **Pillow (PIL)**: `pip install pillow`\
+- **OpenCV**: `pip install opencv-python`\
+- **SciPy**: `pip install scipy`\
+- **scikit-image**: `pip install scikit-image`\
+- **scikit-learn**: `pip install scikit-learn`\
+- **PyTorch**: `pip install torch torchvision` for Bagnet\
+- **Keras**: `pip install keras`\
+- **glob**: (Included in Python standard library)\
+- **os**: (Included in Python standard library)\
+- **shutil**: (Included in Python standard library)\
+- **time**: (Included in Python standard library)\
+\
+Use the following command to install all the necessary packages:\
+\
+```bash\
+pip install numpy matplotlib pillow opencv-python scipy scikit-image scikit-learn torch torchvision keras\
+```\
+\
+---\
+\
+### Project Structure\
+\
+- **PoI.py**: Generates pixel positions for regions of interest (PoI).\
+- **unique_pixels_poi.py**: Removes duplicate pixel positions and saves them in `.txt` and `.npy` formats.\
+- **EA_attack_PoI.py**: Attacks the PoI region in the clean image, resulting in an adversarial image in the Low Resolution (LR) domain.\
+- **Noise_blowin_up(NBU).py**: Applies the Noise Blow Up (NBU) technique to create an adversarial image in the High Resolution (HR) domain.\
+\
+### Instructions\
+\
+1. **Run PoI.py**\
+\
+   The `PoI.py` script must be run twice with different parameters to generate two sets of pixel positions, one for the ancestor category and the other for the target category.\
+\
+   - **First Run**:\
+     - **Percentage**: `35`\
+     - **Distance**: `5` (for DBSCAN, optional)\
+     - **Resolution**: `0` (Low Resolution)\
+     - **Category**: `0` (Ancestor Category)\
+\
+     This run creates a file with pixel positions for the ancestor category.\
+\
+   - **Second Run**:\
+     - **Percentage**: `35`\
+     - **Distance**: `5` (for DBSCAN, optional)\
+     - **Resolution**: `0` (Low Resolution)\
+     - **Category**: `1` (Target Category)\
+\
+     This run creates a file with pixel positions for the target category.\
+\
+2. **Run unique_pixels_poi.py**\
+\
+   After generating the pixel positions, run the `unique_pixels_poi.py` script. This script removes any duplicate pixels from the generated files and saves the unique pixel positions in two formats:\
+\
+   - **Text File**: `.txt`\
+   - **Numpy Array**: `.npy`\
+\
+3. **Run EA_attack_PoI.py**\
+\
+   Next, run the `EA_attack_PoI.py` script. This script attacks the PoI region in the clean image, resulting in an adversarial image in the Low Resolution (LR) domain. The adversarial image will be saved in the specified path within the code.\
+\
+4. **Run Noise_blowin_up(NBU).py**\
+\
+   Finally, apply the Noise Blow Up (NBU) technique by running the `Noise_blowin_up(NBU).py` script. This script generates an adversarial image in the High Resolution (HR) domain, using the previously created LR domain adversarial image.\
+\
+### Output\
+\
+- **PoI.py**: Two files containing pixel positions for the ancestor and target categories.\
+- **unique_pixels_poi.py**: Files with unique pixel positions in `.txt` and `.npy` formats.\
+- **EA_attack_PoI.py**: Adversarial image in the LR domain.\
+- **Noise_blowin_up(NBU).py**: Adversarial image in the HR domain.\
+\
+---\
+\
+### Notes\
+\
+- Ensure that you run the scripts in the correct order as specified above.\
+- The paths for saving the output files are predefined in the scripts; modify them if needed.\
+- The project assumes familiarity with image processing and adversarial attack techniques.\
+\
+---\
+\
+This README file provides step-by-step instructions to guide you through the process of generating adversarial images using the PoI and NBU methods. Make sure all necessary libraries are installed and run the scripts in the specified order to achieve the desired results.}
